@@ -96,7 +96,7 @@ const JUNE_DEPARTMENTS: Row[] = [
 const JUNE_FUNNEL = [
   { value: 484, label: "Interviews Conducted",  color: "bg-ink",         note: "June figure pending source verification." },
   { value: 148, label: "Initially Accepted",    color: "bg-blue-500",    note: "31% of interviewed candidates passed initial screening." },
-  { value: 100, label: "Offers Extended",       color: "bg-amber-400",   note: "100 formal offers issued against approved June vacancies." },
+  { value: 100, label: "Offers Extended",       color: "bg-amber-400",   note: "100 formal offers extended — 90 against approved June vacancies, 10 outside the plan." },
   { value: 79,  label: "Offers Accepted",       color: "bg-emerald-500", note: "79 of 98 resolved offers accepted (81% acceptance)." },
   { value: 72,  label: "Joined",                color: "bg-green-700",   note: "72 candidates completed onboarding and joined." },
 ];
@@ -480,7 +480,7 @@ function JuneOverviewSection() {
       />
       <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4">
         <KpiCard icon={Target}       label="Total Target"      value="127" sub="June 2026 vacancies" source="ManpowerRequirements · Jun 2026 Grand Total" accent />
-        <KpiCard icon={CheckCircle2} label="Offers Secured"    value="90"  sub="71% of 127 vacancies covered" source="Offers tracker · Jun resolved" />
+        <KpiCard icon={CheckCircle2} label="Offers Secured"    value="90"  sub="71% of 127 vacancies covered" source="Vacancy plan · Jun Offered column" />
         <KpiCard icon={TrendingUp}   label="Offer Acceptance"  value="81%" sub="79 of 98 resolved offers accepted · 2 pending" source="= Accepted / Resolved offers" />
         <KpiCard icon={PauseCircle}  label="On Hold"           value="11"  sub="Procurement roles frozen by AR" source="Hold list · excluded from 127 target" />
       </div>
@@ -497,10 +497,11 @@ function JulyOverviewSection() {
         title="July Milestone Status"
         description="July 2026 hiring cycle — 120 target vacancies, 79 offers secured, 66% fill rate. Reporting period: 1–31 July 2026."
       />
-      <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4">
+      <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-5 gap-4">
         <KpiCard icon={Target}       label="Total Target"      value="120" sub="July 2026 vacancies" source="ManpowerRequirements · Jul 2026 Grand Total" accent />
-        <KpiCard icon={CheckCircle2} label="Offered / Secured" value="79"  sub="66% of 120 vacancies covered" source="Offers tracker · Jul resolved" />
-        <KpiCard icon={TrendingUp}   label="Fill Rate"         value="66%" sub="79 of 120 offered" source="= Secured ÷ Target" />
+        <KpiCard icon={CheckCircle2} label="Offers Secured"    value="79"  sub="66% of 120 vacancies covered" source="Vacancy plan · Jul Offered column" />
+        <KpiCard icon={TrendingUp}   label="Fill Rate"         value="66%" sub="79 of 120 offered" source="= Secured / Target" />
+        <KpiCard icon={TrendingUp}   label="Offer Acceptance"  value="78%" sub="32 of 41 resolved offers accepted · 40 pending, excluded" source="= Accepted / (Accepted + Declined)" />
         <KpiCard icon={Clock}        label="Remaining"         value="41"  sub="Active vacancies" source="= 120 − 79" />
       </div>
     </section>
@@ -767,7 +768,7 @@ export function SlidePage({ month = "all" }: { month?: MonthView }) {
             <span className="hidden sm:block h-4 w-px bg-border" />
             <span className="flex items-center gap-2">
               <Users size={14} />
-              5 team members · {month === "june" ? "11 departments" : "7 active sites"} · {month === "june" ? "7 active sites" : "12 roles in pipeline"}
+              5 team members · {month === "june" ? "10 departments" : "7 active sites"} · {month === "june" ? "7 active sites" : "12 roles in pipeline"}
             </span>
           </div>
         </div>
@@ -795,7 +796,11 @@ export function SlidePage({ month = "all" }: { month?: MonthView }) {
         <footer className="mt-24 pt-8 pb-4 border-t border-border print:hidden">
           <div className="flex flex-col gap-4">
             <p className="text-[11px] text-muted-foreground leading-relaxed italic">
-              42 of 181 offers awaiting final outcome. Acceptance rate calculated on resolved offers only. Reporting period: 1 June – 31 July 2026.
+              {month === "june"
+                ? "2 of 100 June offers awaiting final outcome. Acceptance rate calculated on resolved offers only. Reporting period: 1–30 June 2026."
+                : month === "july"
+                ? "40 of 81 July offers awaiting final outcome. Acceptance rate calculated on resolved offers only. Reporting period: 1–31 July 2026."
+                : "42 of 181 offers awaiting final outcome. Acceptance rate calculated on resolved offers only. Reporting period: 1 June – 31 July 2026."}
             </p>
             <div className="flex flex-col sm:flex-row items-center justify-between gap-4">
               <div className="flex items-center gap-3">
