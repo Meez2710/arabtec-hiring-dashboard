@@ -1,0 +1,353 @@
+@import "tailwindcss";
+@import "tw-animate-css";
+
+@custom-variant dark (&:is(.dark *));
+
+/*
+ * Arabtec Design System — v1.0 (single source of truth).
+ * White / near-white surfaces, one red used only as hard edges, charcoal ink bands.
+ * Borders, never shadows (except floating pills / dropdowns). 8px radius only.
+ * Never hardcode colours in components — use these semantic tokens.
+ */
+
+@theme inline {
+  --font-sans: "Inter", system-ui, -apple-system, "Segoe UI", sans-serif;
+  --font-display: "Inter Tight", "Inter", system-ui, sans-serif;
+
+  /* 8px is the only radius */
+  --radius-sm: 4px;
+  --radius-md: 0.5rem;
+  --radius-lg: 0.5rem;
+  --radius-xl: 0.5rem;
+  --radius-2xl: 0.5rem;
+  --radius-3xl: 0.5rem;
+
+  --color-background: hsl(var(--background));
+  --color-foreground: hsl(var(--foreground));
+  --color-surface: hsl(var(--card));
+  --color-card: hsl(var(--card));
+  --color-card-foreground: hsl(var(--card-foreground));
+  --color-popover: hsl(var(--card));
+  --color-popover-foreground: hsl(var(--card-foreground));
+
+  --color-primary: hsl(var(--primary));
+  --color-primary-foreground: hsl(var(--primary-foreground));
+  --color-primary-hover: hsl(var(--primary-hover));
+  --color-primary-tint: hsl(var(--primary-tint));
+
+  --color-ink: hsl(var(--ink));
+  --color-ink-foreground: hsl(var(--ink-foreground));
+
+  --color-secondary: hsl(var(--muted));
+  --color-secondary-foreground: hsl(var(--foreground));
+  --color-muted: hsl(var(--muted));
+  --color-muted-foreground: hsl(var(--muted-foreground));
+  --color-subtle-foreground: hsl(var(--subtle-foreground));
+
+  --color-accent: hsl(var(--info));
+  --color-accent-foreground: hsl(var(--primary-foreground));
+
+  --color-info: hsl(var(--info));
+  --color-success: hsl(var(--success));
+  --color-warning: hsl(var(--warning));
+  --color-destructive: hsl(var(--destructive));
+  --color-destructive-foreground: hsl(var(--destructive-foreground));
+
+  --color-border: hsl(var(--border));
+  --color-border-subtle: hsl(var(--border-subtle));
+  --color-border-strong: hsl(var(--border-strong));
+  --color-input: hsl(var(--input));
+  --color-ring: hsl(var(--ring));
+
+  /* Deck aliases kept so existing slide components stay on tokens */
+  --color-brand: hsl(var(--primary));
+  --color-brand-soft: hsl(var(--primary-tint));
+  --color-brand-ink: hsl(var(--ink));
+
+  --max-width-content: 1280px;
+  --max-width-prose: 68ch;
+}
+
+:root {
+  --radius: 0.5rem;
+
+  /* Brand */
+  --primary: 355 81% 48%;
+  --primary-foreground: 0 0% 100%;
+  --primary-hover: 355 82% 39%;
+  --primary-tint: 355 86% 97%;
+
+  /* Surfaces — white everywhere */
+  --background: 0 0% 100%;
+  --foreground: 217 20% 13%;
+  --card: 0 0% 100%;
+  --card-foreground: 217 20% 13%;
+  --ink: 218 16% 10%;
+  --ink-foreground: 0 0% 100%;
+
+  /* Text */
+  --muted: 220 20% 97%;
+  --muted-foreground: 217 11% 42%;
+  --subtle-foreground: 218 12% 59%;
+
+  /* Lines */
+  --border: 225 16% 91%;
+  --border-subtle: 225 16% 95%;
+  --border-strong: 225 14% 85%;
+  --input: 225 16% 91%;
+  --ring: 218 16% 10%;
+
+  /* Status — only these four */
+  --success: 142 72% 29%;
+  --success-tint: 142 60% 96%;
+  --warning: 26 90% 37%;
+  --warning-tint: 40 90% 96%;
+  --info: 224 76% 48%;
+  --info-tint: 220 90% 97%;
+  --destructive: 355 82% 39%;
+  --destructive-foreground: 0 0% 100%;
+
+  /* Raw values used directly in inline styles by the deck components */
+  --brand: hsl(355 81% 48%);
+  --brand-ink: hsl(218 16% 10%);
+  --brand-soft: hsl(355 86% 97%);
+  --surface: hsl(0 0% 100%);
+  --surface-quiet: hsl(220 20% 98%);
+  --gold: hsl(26 90% 37%);
+  --gold-soft: hsl(40 90% 96%);
+
+  /* Restrained: ink-based, red reserved for small accents only */
+  --gradient-brand: linear-gradient(135deg, hsl(218 16% 10%) 0%, hsl(218 16% 16%) 100%);
+  --gradient-surface: linear-gradient(180deg, hsl(0 0% 100%) 0%, hsl(220 20% 99%) 100%);
+  --shadow-elegant: none;
+  --shadow-brand: none;
+  --shadow-pill: 0 2px 12px -2px rgb(21 24 29 / 0.1), 0 1px 3px -1px rgb(21 24 29 / 0.06);
+}
+
+/* Slide typography */
+.slide-content {
+  --slide-title-lg: 104px;
+  --slide-title:    80px;
+  --slide-subtitle: 40px;
+  --slide-body-lg:  36px;
+  --slide-body:     28px;
+  --slide-caption:  22px;
+  --slide-kicker:   20px;
+  --slide-chrome:   18px;
+  font-family: var(--font-sans);
+  color: var(--foreground);
+}
+.slide-title-lg { font-size: var(--slide-title-lg); line-height: 1.0; letter-spacing: -0.04em; font-weight: 800; }
+.slide-title    { font-size: var(--slide-title);    line-height: 1.05; letter-spacing: -0.035em; font-weight: 800; }
+.slide-subtitle { font-size: var(--slide-subtitle); line-height: 1.2;  letter-spacing: -0.02em;  font-weight: 500; }
+.slide-body-lg  { font-size: var(--slide-body-lg);  line-height: 1.25; }
+.slide-body     { font-size: var(--slide-body);     line-height: 1.35; }
+.slide-caption  { font-size: var(--slide-caption);  line-height: 1.35; }
+.slide-kicker   { font-size: var(--slide-kicker);   line-height: 1.1;  letter-spacing: 0.18em; text-transform: uppercase; font-weight: 600; }
+.slide-chrome   { font-size: var(--slide-chrome);   line-height: 1.2;  letter-spacing: 0.14em; text-transform: uppercase; font-weight: 600; }
+
+@layer base {
+  * { border-color: var(--color-border); }
+  html, body {
+    background-color: var(--color-background);
+    color: var(--color-foreground);
+    font-family: var(--font-sans);
+    font-size: 16px;
+    line-height: 1.6;
+    -webkit-font-smoothing: antialiased;
+    font-feature-settings: "cv11", "ss01";
+  }
+  h1, h2, h3, .display {
+    font-family: var(--font-display);
+    font-weight: 800;
+    letter-spacing: -0.03em;
+    line-height: 0.98;
+  }
+  h4, h5 {
+    font-family: var(--font-display);
+    letter-spacing: -0.02em;
+  }
+}
+
+/* The tiny wide-tracked label above every heading, with its short red dash. */
+@utility eyebrow {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.75rem;
+  font-size: 11px;
+  line-height: 14px;
+  font-weight: 700;
+  letter-spacing: 0.22em;
+  text-transform: uppercase;
+  white-space: nowrap;
+  color: var(--color-muted-foreground);
+  &::before {
+    content: "";
+    display: block;
+    height: 2px;
+    width: 1.5rem;
+    background: var(--color-primary);
+    flex: none;
+  }
+}
+
+@utility eyebrow-plain {
+  font-size: 11px;
+  line-height: 14px;
+  font-weight: 700;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+}
+
+@utility num {
+  font-variant-numeric: tabular-nums;
+}
+
+@utility surface-card {
+  background-color: var(--color-card);
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius-lg);
+}
+
+@utility scroll-slim {
+  scrollbar-width: thin;
+  &::-webkit-scrollbar { height: 6px; width: 6px; }
+  &::-webkit-scrollbar-thumb {
+    background: var(--color-border-strong);
+    border-radius: 9999px;
+  }
+}
+
+@utility bg-grid {
+  background-image:
+    linear-gradient(to right, hsl(217 20% 13% / 0.04) 1px, transparent 1px),
+    linear-gradient(to bottom, hsl(217 20% 13% / 0.04) 1px, transparent 1px);
+  background-size: 48px 48px;
+}
+
+@utility bg-brand-gradient {
+  background-image: var(--gradient-brand);
+}
+
+@utility shadow-elegant {
+  box-shadow: var(--shadow-elegant);
+}
+
+@utility shadow-brand {
+  box-shadow: var(--shadow-brand);
+}
+
+@utility text-gradient-brand {
+  color: var(--brand-ink);
+}
+
+/* The single red full-stop used after a headline. */
+@utility dot-accent {
+  color: var(--brand);
+}
+
+@keyframes shimmer {
+  0% { transform: translate3d(-100%, 0, 0); }
+  100% { transform: translate3d(220%, 0, 0); }
+}
+@utility animate-shimmer {
+  animation: shimmer 2.8s cubic-bezier(0.4, 0, 0.2, 1) infinite;
+  will-change: transform;
+}
+
+@keyframes reveal-up {
+  from { opacity: 0; transform: translate3d(0, 10px, 0); }
+  to   { opacity: 1; transform: translate3d(0, 0, 0); }
+}
+@utility animate-reveal {
+  animation: reveal-up 0.7s cubic-bezier(0.22, 1, 0.36, 1) both;
+  will-change: transform, opacity;
+}
+
+@utility hero-blob {
+  contain: paint;
+  will-change: opacity;
+  transform: translateZ(0);
+}
+
+@utility lift {
+  transition: transform 0.35s cubic-bezier(0.22, 1, 0.36, 1),
+              box-shadow 0.35s cubic-bezier(0.22, 1, 0.36, 1),
+              border-color 0.35s ease;
+  will-change: transform;
+  transform: translateZ(0);
+  backface-visibility: hidden;
+}
+.lift:hover { transform: translate3d(0, -3px, 0); }
+
+@utility bar-fill {
+  transition: width 900ms cubic-bezier(0.22, 1, 0.36, 1);
+  will-change: width;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  *, *::before, *::after {
+    animation-duration: 0.001ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.001ms !important;
+    scroll-behavior: auto !important;
+  }
+}
+
+/* Mobile slide typography scaling */
+@media (max-width: 639px) {
+  .slide-content {
+    --slide-title-lg: 48px;
+    --slide-title: 36px;
+    --slide-subtitle: 20px;
+    --slide-body-lg: 18px;
+    --slide-body: 14px;
+    --slide-caption: 12px;
+    --slide-kicker: 11px;
+    --slide-chrome: 10px;
+  }
+}
+
+/* Tablet slide typography */
+@media (min-width: 640px) and (max-width: 1023px) {
+  .slide-content {
+    --slide-title-lg: 72px;
+    --slide-title: 56px;
+    --slide-subtitle: 28px;
+    --slide-body-lg: 24px;
+    --slide-body: 20px;
+    --slide-caption: 16px;
+    --slide-kicker: 14px;
+    --slide-chrome: 13px;
+  }
+}
+
+@layer components {
+  .container {
+    width: 100%;
+    margin-left: auto;
+    margin-right: auto;
+    padding-left: 1rem;
+    padding-right: 1rem;
+  }
+
+  .flex {
+    min-height: 0;
+    min-width: 0;
+  }
+
+  @media (min-width: 640px) {
+    .container {
+      padding-left: 1.5rem;
+      padding-right: 1.5rem;
+    }
+  }
+
+  @media (min-width: 1024px) {
+    .container {
+      padding-left: 2rem;
+      padding-right: 2rem;
+      max-width: 1280px;
+    }
+  }
+}

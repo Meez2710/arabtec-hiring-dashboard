@@ -1,0 +1,74 @@
+# Project TODO
+
+- [x] Port all source files from extracted zip into webdev project structure
+- [x] Update June milestone stats: 127 target, 90 offered, 37 remaining, 71% acceptance
+- [x] Update July milestone stats: 120 target, 79 offered, 41 remaining, 66% acceptance
+- [x] Update July interview funnel: 355 total, 94 accepted, 47 hold, 88 rejected, 126 declined
+- [x] Remove "A Note from the Team" heading and paragraph from SlidePage.tsx
+- [x] Ensure Slide1Cover reflects updated metrics (127 target, 90 secured, 71%)
+- [x] Ensure Slide2FullPicture reflects updated metrics
+- [x] Ensure Slide6Funnel reflects July interview funnel (355/94/47/88/126)
+- [x] Ensure Slide7Outcomes reflects updated metrics
+- [x] Ensure Slide8JulyIntro reflects July stats (120/79/41/66%)
+- [x] Preserve full slide deck navigation (10 slides, keyboard nav, fullscreen, dot indicators)
+- [x] Preserve scrollable SlidePage dashboard view
+- [x] Audit all numbers against ManpowerRequirements1.xlsx
+- [x] Audit all numbers against FinalUpdatedforJulyInterviews-R1xlsx.xlsx
+- [x] Verify top-level metrics match Excel Grand Total rows
+- [x] Update Overview "Full Milestone Picture" to show combined June+July (247 target, 169 offered, 68%, 78 remaining)
+- [x] Update Slide2FullPicture to show combined June+July metrics
+- [x] Update Slide1Cover to show combined June+July headline (247 Target, 169 Secured, 68%)
+- [x] Update SlideDeck callout text to clarify June-specific context
+- [x] Enhance mobile responsiveness across all views (SlidePage, header, KPI cards, bars, funnel)
+- [x] Remove "Made with Manus" branding — platform-level badge, user informed to toggle in Settings
+- [x] Improve mobile compatibility for the slide deck presentation view
+- [x] Fix July Remaining by Project: updated with correct Excel values (NC=53, HO=23, Aliva=14, MV1.1=12, Burouj=9, Icity=6, HO1=3)
+- [x] Fix July Remaining by Role: updated with correct Excel values (HSE Officer=11, Tech Engineer=5, Purchaser=5, etc.)
+- [x] Show offered/secured progress per site and per role (not just zeros)
+- [x] Create separate June page with June-specific data (target=127, offered=90, remaining=37, 71%)
+- [x] Create separate June page with June-specific data (target=127, offered=90, remaining=37, 71%)
+- [x] Create separate July page with July-specific data (target=120, offered=79, remaining=41, 66%)
+- [x] Add month toggle button in header to switch between June and July pages
+- [x] Preserve the combined overview on the home/landing page
+- [x] Update routing in App.tsx for /june and /july routes
+- [x] Full data audit of all June and July sections against Excel sheets
+- [x] Fix June project offered values (North Coast 29, Head Office 13/target 20, Burouj 11, Icity 5, MV 1.1 9/target 11)
+- [x] Replace June department breakdown with by-role breakdown (Excel has no dept column for June)
+- [x] Add June Offer Funnel section (100 offers, 72 joined, 19 declined, 7 no-show, 2 other)
+- [x] Fix July Head Office target (23 → 25) and Aliva offered (8 → 9)
+- [x] Add July By Department section (Construction/HSE/Procurement/Quality/Technical/HR&Admin/MEP/Commercial/Stores/Planning/DC)
+- [x] Update July breakdown to show By Project + By Department + By Role (Remaining)
+- [x] A1: June target 126→127 (MV 1.1 target 10→11, Construction 43→44)
+- [x] A2: Replace acceptance rate tile with "Offer Acceptance — 81%" (79/98 resolved)
+- [x] A3: Replace tiles with "Offers Secured — 90" and "On Hold — 11"
+- [x] A4: June funnel 5 stages: 484→148→100→79→72 with footnote
+- [x] A5: Remove July section from June page, link to July dashboard
+- [x] B1: Normalize project names in Combined page
+- [x] B2: Rename "Acceptance Rate" to "Fill Rate 68%" + add "Offer Acceptance 80%" tile
+- [x] B3: Fix By-Project totals (Head Office 36→34, MV 1.1 22→23) to sum 247/169
+- [x] B4: Fix By-Department to total 247/169 (add Estimation, Operation, IT)
+- [x] B5: Fix funnel percentages — July divides by 355 not 839
+- [x] B6: Label June 484 as "pending source verification"
+- [x] Global: Breakdown cards must sum to headline (add Unassigned if needed)
+- [x] Global: Print formula/source under each tile
+- [x] Global: Add reporting period "1 June – 31 July 2026"
+- [x] Global: Footer note about 42 pending offers
+- [x] Fix JULY_SITES sum: Head Office target 25→23, done 8→6 (now sums to 120/79)
+- [x] Fix ALL_PROJECTS sum: Head Office done 16→14 (now sums to 247/169)
+- [x] Add assertions for JULY_SITES and JULY_DEPARTMENTS (120/79)
+- [x] Update ALL_PROJECTS assertion from 171→169 done
+- [x] Fix ALL_DEPARTMENTS: Technical Office 15/31→16/34, Cost Control/DC 5/5→6/6, Estimation 2/3→2/2, Operation 2/3→1/1, delete Unassigned
+- [x] Merge Surveying 6/6 into Construction (June surveyors sit in Construction bucket)
+- [x] Fix "Offers Secured 169" source from "Offers tracker · resolved" to "Vacancy plan · Offered column"
+- [x] Add Aliva tooltip explaining 3 July offers exceeded plan
+- [x] Add version stamp in footer: "Build 2026-08-06 · v1.3 · Data as of 31 July 2026"
+- [x] Add freshness check on load: compare deployed build id to running build id, show dismissible banner if stale
+- [x] Add Cache-Control: public, max-age=31536000, immutable on /assets/* in server
+- [x] Fix department/project list: never truncate, render every row, show "No data" if empty
+- [x] Fix JULY_DEPARTMENTS: Cost Control 1/1 was missing and folded into Operation (2/2 -> 1/1)
+- [x] Carry-over model: combined target 247 -> 210 (June's 37 unfilled roles re-open in July; counting both double-counts)
+- [x] Combined Remaining 78 -> 41 (now equals July remaining, as it must)
+- [x] Combined Fill Rate 68% -> 80% (169/210)
+- [x] Offer Acceptance -> 83% (169 offers - 28 declined; 42 pending disclosed)
+- [x] Rebase ALL_PROJECTS + ALL_DEPARTMENTS targets onto 210; assertions updated
+- [x] Align slide deck (Slide1Cover, Slide2FullPicture, SlideDeck June bars) with the three pages
